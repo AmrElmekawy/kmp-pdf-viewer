@@ -177,13 +177,20 @@ private fun Controls(
             // An LTR isolate keeps "3 / 12" from being reordered to "12 / 3" in RTL.
             text = if (ready) "\u2066${state.currentPage + 1} / ${state.pageCount}\u2069" else "–",
             style = TextStyle(fontSize = 16.sp),
+            softWrap = false,
+            maxLines = 1,
         )
         Chip("›", selected = false) { scope.launch { state.scrollToPage(state.currentPage + 1) } }
-        Box(Modifier.weight(1f))
-        Chip("RTL", selected = rtl) { onRtlChange(!rtl) }
-        Chip("Vertical", selected = vertical) { onVerticalChange(!vertical) }
-        Chip("Reload", selected = false) { state.reload() }
-        Chip("Fullscreen", selected = false, onClick = onFullscreen)
+        // Scrolls sideways on narrow screens; the page controls stay in place.
+        Row(
+            Modifier.weight(1f).horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
+        ) {
+            Chip("RTL", selected = rtl) { onRtlChange(!rtl) }
+            Chip("Vertical", selected = vertical) { onVerticalChange(!vertical) }
+            Chip("Reload", selected = false) { state.reload() }
+            Chip("Fullscreen", selected = false, onClick = onFullscreen)
+        }
     }
 }
 
@@ -198,6 +205,8 @@ private fun Chip(
     BasicText(
         text = label,
         style = TextStyle(fontSize = 14.sp, color = if (selected) Color.White else Color(0xFF202020)),
+        softWrap = false,
+        maxLines = 1,
         modifier =
             modifier
                 .background(if (selected) Color(0xFF3366CC) else Color.White, shape)
