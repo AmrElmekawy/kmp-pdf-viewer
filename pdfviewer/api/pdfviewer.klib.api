@@ -1,0 +1,177 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <compose-pdf-viewer:pdfviewer>
+sealed interface io.github.amrelmekawy.pdfviewer/PdfError { // io.github.amrelmekawy.pdfviewer/PdfError|null[0]
+    final class Network : io.github.amrelmekawy.pdfviewer/PdfError { // io.github.amrelmekawy.pdfviewer/PdfError.Network|null[0]
+        constructor <init>(kotlin/Int?) // io.github.amrelmekawy.pdfviewer/PdfError.Network.<init>|<init>(kotlin.Int?){}[0]
+
+        final val httpCode // io.github.amrelmekawy.pdfviewer/PdfError.Network.httpCode|{}httpCode[0]
+            final fun <get-httpCode>(): kotlin/Int? // io.github.amrelmekawy.pdfviewer/PdfError.Network.httpCode.<get-httpCode>|<get-httpCode>(){}[0]
+
+        final fun component1(): kotlin/Int? // io.github.amrelmekawy.pdfviewer/PdfError.Network.component1|component1(){}[0]
+        final fun copy(kotlin/Int? = ...): io.github.amrelmekawy.pdfviewer/PdfError.Network // io.github.amrelmekawy.pdfviewer/PdfError.Network.copy|copy(kotlin.Int?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfError.Network.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfError.Network.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfError.Network.toString|toString(){}[0]
+    }
+
+    final object InvalidDocument : io.github.amrelmekawy.pdfviewer/PdfError { // io.github.amrelmekawy.pdfviewer/PdfError.InvalidDocument|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfError.InvalidDocument.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfError.InvalidDocument.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfError.InvalidDocument.toString|toString(){}[0]
+    }
+
+    final object NotFound : io.github.amrelmekawy.pdfviewer/PdfError { // io.github.amrelmekawy.pdfviewer/PdfError.NotFound|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfError.NotFound.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfError.NotFound.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfError.NotFound.toString|toString(){}[0]
+    }
+
+    final object PasswordProtected : io.github.amrelmekawy.pdfviewer/PdfError { // io.github.amrelmekawy.pdfviewer/PdfError.PasswordProtected|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfError.PasswordProtected.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfError.PasswordProtected.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfError.PasswordProtected.toString|toString(){}[0]
+    }
+
+    final object TooLarge : io.github.amrelmekawy.pdfviewer/PdfError { // io.github.amrelmekawy.pdfviewer/PdfError.TooLarge|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfError.TooLarge.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfError.TooLarge.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfError.TooLarge.toString|toString(){}[0]
+    }
+
+    final object Unknown : io.github.amrelmekawy.pdfviewer/PdfError { // io.github.amrelmekawy.pdfviewer/PdfError.Unknown|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfError.Unknown.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfError.Unknown.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfError.Unknown.toString|toString(){}[0]
+    }
+}
+
+sealed interface io.github.amrelmekawy.pdfviewer/PdfLoadState { // io.github.amrelmekawy.pdfviewer/PdfLoadState|null[0]
+    final class Failed : io.github.amrelmekawy.pdfviewer/PdfLoadState { // io.github.amrelmekawy.pdfviewer/PdfLoadState.Failed|null[0]
+        constructor <init>(io.github.amrelmekawy.pdfviewer/PdfError) // io.github.amrelmekawy.pdfviewer/PdfLoadState.Failed.<init>|<init>(io.github.amrelmekawy.pdfviewer.PdfError){}[0]
+
+        final val error // io.github.amrelmekawy.pdfviewer/PdfLoadState.Failed.error|{}error[0]
+            final fun <get-error>(): io.github.amrelmekawy.pdfviewer/PdfError // io.github.amrelmekawy.pdfviewer/PdfLoadState.Failed.error.<get-error>|<get-error>(){}[0]
+
+        final fun component1(): io.github.amrelmekawy.pdfviewer/PdfError // io.github.amrelmekawy.pdfviewer/PdfLoadState.Failed.component1|component1(){}[0]
+        final fun copy(io.github.amrelmekawy.pdfviewer/PdfError = ...): io.github.amrelmekawy.pdfviewer/PdfLoadState.Failed // io.github.amrelmekawy.pdfviewer/PdfLoadState.Failed.copy|copy(io.github.amrelmekawy.pdfviewer.PdfError){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfLoadState.Failed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfLoadState.Failed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfLoadState.Failed.toString|toString(){}[0]
+    }
+
+    final class Ready : io.github.amrelmekawy.pdfviewer/PdfLoadState { // io.github.amrelmekawy.pdfviewer/PdfLoadState.Ready|null[0]
+        constructor <init>(kotlin/Int) // io.github.amrelmekawy.pdfviewer/PdfLoadState.Ready.<init>|<init>(kotlin.Int){}[0]
+
+        final val pageCount // io.github.amrelmekawy.pdfviewer/PdfLoadState.Ready.pageCount|{}pageCount[0]
+            final fun <get-pageCount>(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfLoadState.Ready.pageCount.<get-pageCount>|<get-pageCount>(){}[0]
+
+        final fun component1(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfLoadState.Ready.component1|component1(){}[0]
+        final fun copy(kotlin/Int = ...): io.github.amrelmekawy.pdfviewer/PdfLoadState.Ready // io.github.amrelmekawy.pdfviewer/PdfLoadState.Ready.copy|copy(kotlin.Int){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfLoadState.Ready.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfLoadState.Ready.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfLoadState.Ready.toString|toString(){}[0]
+    }
+
+    final object Loading : io.github.amrelmekawy.pdfviewer/PdfLoadState { // io.github.amrelmekawy.pdfviewer/PdfLoadState.Loading|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfLoadState.Loading.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfLoadState.Loading.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfLoadState.Loading.toString|toString(){}[0]
+    }
+}
+
+sealed interface io.github.amrelmekawy.pdfviewer/PdfSource { // io.github.amrelmekawy.pdfviewer/PdfSource|null[0]
+    final class Bytes : io.github.amrelmekawy.pdfviewer/PdfSource { // io.github.amrelmekawy.pdfviewer/PdfSource.Bytes|null[0]
+        constructor <init>(kotlin/ByteArray) // io.github.amrelmekawy.pdfviewer/PdfSource.Bytes.<init>|<init>(kotlin.ByteArray){}[0]
+
+        final val bytes // io.github.amrelmekawy.pdfviewer/PdfSource.Bytes.bytes|{}bytes[0]
+            final fun <get-bytes>(): kotlin/ByteArray // io.github.amrelmekawy.pdfviewer/PdfSource.Bytes.bytes.<get-bytes>|<get-bytes>(){}[0]
+
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfSource.Bytes.toString|toString(){}[0]
+    }
+
+    final class File : io.github.amrelmekawy.pdfviewer/PdfSource { // io.github.amrelmekawy.pdfviewer/PdfSource.File|null[0]
+        constructor <init>(kotlin/String) // io.github.amrelmekawy.pdfviewer/PdfSource.File.<init>|<init>(kotlin.String){}[0]
+
+        final val path // io.github.amrelmekawy.pdfviewer/PdfSource.File.path|{}path[0]
+            final fun <get-path>(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfSource.File.path.<get-path>|<get-path>(){}[0]
+
+        final fun component1(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfSource.File.component1|component1(){}[0]
+        final fun copy(kotlin/String = ...): io.github.amrelmekawy.pdfviewer/PdfSource.File // io.github.amrelmekawy.pdfviewer/PdfSource.File.copy|copy(kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfSource.File.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfSource.File.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfSource.File.toString|toString(){}[0]
+    }
+
+    final class Remote : io.github.amrelmekawy.pdfviewer/PdfSource { // io.github.amrelmekawy.pdfviewer/PdfSource.Remote|null[0]
+        constructor <init>(kotlin/String, kotlin.collections/Map<kotlin/String, kotlin/String> = ...) // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.<init>|<init>(kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+
+        final val headers // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.headers|{}headers[0]
+            final fun <get-headers>(): kotlin.collections/Map<kotlin/String, kotlin/String> // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.headers.<get-headers>|<get-headers>(){}[0]
+        final val url // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.url|{}url[0]
+            final fun <get-url>(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.url.<get-url>|<get-url>(){}[0]
+
+        final fun component1(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.component1|component1(){}[0]
+        final fun component2(): kotlin.collections/Map<kotlin/String, kotlin/String> // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...): io.github.amrelmekawy.pdfviewer/PdfSource.Remote // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.copy|copy(kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfSource.Remote.toString|toString(){}[0]
+    }
+}
+
+final class io.github.amrelmekawy.pdfviewer/PdfViewerState { // io.github.amrelmekawy.pdfviewer/PdfViewerState|null[0]
+    final val currentPage // io.github.amrelmekawy.pdfviewer/PdfViewerState.currentPage|{}currentPage[0]
+        final fun <get-currentPage>(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfViewerState.currentPage.<get-currentPage>|<get-currentPage>(){}[0]
+    final val pageCount // io.github.amrelmekawy.pdfviewer/PdfViewerState.pageCount|{}pageCount[0]
+        final fun <get-pageCount>(): kotlin/Int // io.github.amrelmekawy.pdfviewer/PdfViewerState.pageCount.<get-pageCount>|<get-pageCount>(){}[0]
+
+    final var loadState // io.github.amrelmekawy.pdfviewer/PdfViewerState.loadState|{}loadState[0]
+        final fun <get-loadState>(): io.github.amrelmekawy.pdfviewer/PdfLoadState // io.github.amrelmekawy.pdfviewer/PdfViewerState.loadState.<get-loadState>|<get-loadState>(){}[0]
+
+    final fun reload() // io.github.amrelmekawy.pdfviewer/PdfViewerState.reload|reload(){}[0]
+    final suspend fun scrollToPage(kotlin/Int, kotlin/Boolean = ...) // io.github.amrelmekawy.pdfviewer/PdfViewerState.scrollToPage|scrollToPage(kotlin.Int;kotlin.Boolean){}[0]
+}
+
+final object io.github.amrelmekawy.pdfviewer/PdfViewerDefaults { // io.github.amrelmekawy.pdfviewer/PdfViewerDefaults|null[0]
+    final fun Error(io.github.amrelmekawy.pdfviewer/PdfError, kotlin/Function0<kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int) // io.github.amrelmekawy.pdfviewer/PdfViewerDefaults.Error|Error(io.github.amrelmekawy.pdfviewer.PdfError;kotlin.Function0<kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int){}[0]
+    final fun Loading(androidx.compose.runtime/Composer?, kotlin/Int) // io.github.amrelmekawy.pdfviewer/PdfViewerDefaults.Loading|Loading(androidx.compose.runtime.Composer?;kotlin.Int){}[0]
+    final fun pageContentDescription(kotlin/Int, kotlin/Int): kotlin/String // io.github.amrelmekawy.pdfviewer/PdfViewerDefaults.pageContentDescription|pageContentDescription(kotlin.Int;kotlin.Int){}[0]
+}
+
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_InvalidDocument$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_InvalidDocument$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfError_InvalidDocument$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_Network$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_Network$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfError_Network$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_NotFound$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_NotFound$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfError_NotFound$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_PasswordProtected$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_PasswordProtected$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfError_PasswordProtected$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_TooLarge$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_TooLarge$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfError_TooLarge$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_Unknown$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_Unknown$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfError_Unknown$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Failed$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Failed$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfLoadState_Failed$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Loading$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Loading$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfLoadState_Loading$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Ready$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Ready$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfLoadState_Ready$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_Bytes$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_Bytes$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfSource_Bytes$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_File$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_File$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfSource_File$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_Remote$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_Remote$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfSource_Remote$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfViewerDefaults$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfViewerDefaults$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfViewerDefaults$stableprop[0]
+final val io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfViewerState$stableprop // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfViewerState$stableprop|#static{}io_github_amrelmekawy_pdfviewer_PdfViewerState$stableprop[0]
+
+final fun io.github.amrelmekawy.pdfviewer/PdfViewer(io.github.amrelmekawy.pdfviewer/PdfViewerState, androidx.compose.ui/Modifier?, kotlin/Boolean, androidx.compose.ui.unit/Dp, kotlin/Function2<kotlin/Int, kotlin/Int, kotlin/String>?, kotlin/Function2<androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit>?, kotlin/Function4<io.github.amrelmekawy.pdfviewer/PdfError, kotlin/Function0<kotlin/Unit>, androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit>?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // io.github.amrelmekawy.pdfviewer/PdfViewer|PdfViewer(io.github.amrelmekawy.pdfviewer.PdfViewerState;androidx.compose.ui.Modifier?;kotlin.Boolean;androidx.compose.ui.unit.Dp;kotlin.Function2<kotlin.Int,kotlin.Int,kotlin.String>?;kotlin.Function2<androidx.compose.runtime.Composer,kotlin.Int,kotlin.Unit>?;kotlin.Function4<io.github.amrelmekawy.pdfviewer.PdfError,kotlin.Function0<kotlin.Unit>,androidx.compose.runtime.Composer,kotlin.Int,kotlin.Unit>?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_InvalidDocument$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_InvalidDocument$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfError_InvalidDocument$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_Network$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_Network$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfError_Network$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_NotFound$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_NotFound$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfError_NotFound$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_PasswordProtected$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_PasswordProtected$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfError_PasswordProtected$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_TooLarge$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_TooLarge$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfError_TooLarge$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_Unknown$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfError_Unknown$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfError_Unknown$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Failed$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Failed$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfLoadState_Failed$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Loading$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Loading$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfLoadState_Loading$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Ready$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfLoadState_Ready$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfLoadState_Ready$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_Bytes$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_Bytes$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfSource_Bytes$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_File$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_File$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfSource_File$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_Remote$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfSource_Remote$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfSource_Remote$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfViewerDefaults$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfViewerDefaults$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfViewerDefaults$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfViewerState$stableprop_getter(): kotlin/Int // io.github.amrelmekawy.pdfviewer/io_github_amrelmekawy_pdfviewer_PdfViewerState$stableprop_getter|io_github_amrelmekawy_pdfviewer_PdfViewerState$stableprop_getter(){}[0]
+final fun io.github.amrelmekawy.pdfviewer/rememberPdfViewerState(io.github.amrelmekawy.pdfviewer/PdfSource, kotlin/Int, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int): io.github.amrelmekawy.pdfviewer/PdfViewerState // io.github.amrelmekawy.pdfviewer/rememberPdfViewerState|rememberPdfViewerState(io.github.amrelmekawy.pdfviewer.PdfSource;kotlin.Int;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]

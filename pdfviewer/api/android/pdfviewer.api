@@ -1,0 +1,160 @@
+public final class io/github/amrelmekawy/pdfviewer/ComposableSingletons$PdfViewerKt {
+	public static final field INSTANCE Lio/github/amrelmekawy/pdfviewer/ComposableSingletons$PdfViewerKt;
+	public fun <init> ()V
+	public final fun getLambda$-1460390602$compose_pdf_viewer_pdfviewer ()Lkotlin/jvm/functions/Function4;
+	public final fun getLambda$-5341812$compose_pdf_viewer_pdfviewer ()Lkotlin/jvm/functions/Function2;
+}
+
+public abstract interface class io/github/amrelmekawy/pdfviewer/PdfError {
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfError$InvalidDocument : io/github/amrelmekawy/pdfviewer/PdfError {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/amrelmekawy/pdfviewer/PdfError$InvalidDocument;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfError$Network : io/github/amrelmekawy/pdfviewer/PdfError {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/Integer;)V
+	public final fun component1 ()Ljava/lang/Integer;
+	public final fun copy (Ljava/lang/Integer;)Lio/github/amrelmekawy/pdfviewer/PdfError$Network;
+	public static synthetic fun copy$default (Lio/github/amrelmekawy/pdfviewer/PdfError$Network;Ljava/lang/Integer;ILjava/lang/Object;)Lio/github/amrelmekawy/pdfviewer/PdfError$Network;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHttpCode ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfError$NotFound : io/github/amrelmekawy/pdfviewer/PdfError {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/amrelmekawy/pdfviewer/PdfError$NotFound;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfError$PasswordProtected : io/github/amrelmekawy/pdfviewer/PdfError {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/amrelmekawy/pdfviewer/PdfError$PasswordProtected;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfError$TooLarge : io/github/amrelmekawy/pdfviewer/PdfError {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/amrelmekawy/pdfviewer/PdfError$TooLarge;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfError$Unknown : io/github/amrelmekawy/pdfviewer/PdfError {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/amrelmekawy/pdfviewer/PdfError$Unknown;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class io/github/amrelmekawy/pdfviewer/PdfLoadState {
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfLoadState$Failed : io/github/amrelmekawy/pdfviewer/PdfLoadState {
+	public static final field $stable I
+	public fun <init> (Lio/github/amrelmekawy/pdfviewer/PdfError;)V
+	public final fun component1 ()Lio/github/amrelmekawy/pdfviewer/PdfError;
+	public final fun copy (Lio/github/amrelmekawy/pdfviewer/PdfError;)Lio/github/amrelmekawy/pdfviewer/PdfLoadState$Failed;
+	public static synthetic fun copy$default (Lio/github/amrelmekawy/pdfviewer/PdfLoadState$Failed;Lio/github/amrelmekawy/pdfviewer/PdfError;ILjava/lang/Object;)Lio/github/amrelmekawy/pdfviewer/PdfLoadState$Failed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lio/github/amrelmekawy/pdfviewer/PdfError;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfLoadState$Loading : io/github/amrelmekawy/pdfviewer/PdfLoadState {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/amrelmekawy/pdfviewer/PdfLoadState$Loading;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfLoadState$Ready : io/github/amrelmekawy/pdfviewer/PdfLoadState {
+	public static final field $stable I
+	public fun <init> (I)V
+	public final fun component1 ()I
+	public final fun copy (I)Lio/github/amrelmekawy/pdfviewer/PdfLoadState$Ready;
+	public static synthetic fun copy$default (Lio/github/amrelmekawy/pdfviewer/PdfLoadState$Ready;IILjava/lang/Object;)Lio/github/amrelmekawy/pdfviewer/PdfLoadState$Ready;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPageCount ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class io/github/amrelmekawy/pdfviewer/PdfSource {
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfSource$Bytes : io/github/amrelmekawy/pdfviewer/PdfSource {
+	public static final field $stable I
+	public fun <init> ([B)V
+	public final fun getBytes ()[B
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfSource$File : io/github/amrelmekawy/pdfviewer/PdfSource {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/github/amrelmekawy/pdfviewer/PdfSource$File;
+	public static synthetic fun copy$default (Lio/github/amrelmekawy/pdfviewer/PdfSource$File;Ljava/lang/String;ILjava/lang/Object;)Lio/github/amrelmekawy/pdfviewer/PdfSource$File;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPath ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfSource$Remote : io/github/amrelmekawy/pdfviewer/PdfSource {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;)Lio/github/amrelmekawy/pdfviewer/PdfSource$Remote;
+	public static synthetic fun copy$default (Lio/github/amrelmekawy/pdfviewer/PdfSource$Remote;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lio/github/amrelmekawy/pdfviewer/PdfSource$Remote;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHeaders ()Ljava/util/Map;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfViewerDefaults {
+	public static final field $stable I
+	public static final field INSTANCE Lio/github/amrelmekawy/pdfviewer/PdfViewerDefaults;
+	public final fun Error (Lio/github/amrelmekawy/pdfviewer/PdfError;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
+	public final fun Loading (Landroidx/compose/runtime/Composer;I)V
+	public final fun pageContentDescription (II)Ljava/lang/String;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfViewerKt {
+	public static final fun PdfViewer--b7W0Lw (Lio/github/amrelmekawy/pdfviewer/PdfViewerState;Landroidx/compose/ui/Modifier;ZFLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function4;Landroidx/compose/runtime/Composer;II)V
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfViewerState {
+	public static final field $stable I
+	public final fun getCurrentPage ()I
+	public final fun getLoadState ()Lio/github/amrelmekawy/pdfviewer/PdfLoadState;
+	public final fun getPageCount ()I
+	public final fun reload ()V
+	public final fun scrollToPage (IZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun scrollToPage$default (Lio/github/amrelmekawy/pdfviewer/PdfViewerState;IZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/amrelmekawy/pdfviewer/PdfViewerStateKt {
+	public static final fun rememberPdfViewerState (Lio/github/amrelmekawy/pdfviewer/PdfSource;ILandroidx/compose/runtime/Composer;II)Lio/github/amrelmekawy/pdfviewer/PdfViewerState;
+}
+
