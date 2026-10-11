@@ -3,12 +3,19 @@
 
 # Build and IDE output.
 .gradle/
+.kotlin/
 build/
 **/build/
 .idea/
 *.iml
+.DS_Store
 local.properties
 
-# Sensitive local publication credentials.
-gradle.properties
+# Xcode user state.
+xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+
+# Sensitive local credentials. Publication secrets live in
+# ~/.gradle/gradle.properties or CI environment variables only.
 secrets.properties
