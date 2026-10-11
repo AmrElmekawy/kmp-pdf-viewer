@@ -5,13 +5,11 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asComposeImageBitmap
 import io.github.amrelmekawy.pdfviewer.PdfError
 import kotlinx.cinterop.BetaInteropApi
-import kotlinx.cinterop.ByteVar
-import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.cinterop.addressOf
 import kotlinx.cinterop.autoreleasepool
-import kotlinx.cinterop.readBytes
-import kotlinx.cinterop.reinterpret
 import kotlinx.cinterop.useContents
+import kotlinx.cinterop.usePinned
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
@@ -37,6 +35,7 @@ import platform.Foundation.NSFileManager
 import platform.PDFKit.PDFDocument
 import platform.PDFKit.PDFPage
 import platform.PDFKit.kPDFDisplayBoxCropBox
+import platform.posix.memcpy
 
 /**
  * A document rendered by PDFKit into a CoreGraphics bitmap.
@@ -143,8 +142,10 @@ private fun render(
         // drawWithBox applies the page rotation and the crop box origin.
         page.drawWithBox(kPDFDisplayBoxCropBox, toContext = context)
 
-        val data: CPointer<ByteVar> = checkNotNull(CGBitmapContextGetData(context)).reinterpret()
-        val pixels = data.readBytes(rowBytes * heightPx)
+        val data = checkNotNull(CGBitmapContextGetData(context))
+        // One memcpy: readBytes copies byte by byte and takes about a second for a full-screen page.
+        val pixels = ByteArray(rowBytes * heightPx)
+        pixels.usePinned { memcpy(it.addressOf(0), data, pixels.size.toULong()) }
         val bitmap = Bitmap()
         val info = ImageInfo(widthPx, heightPx, ColorType.RGBA_8888, ColorAlphaType.PREMUL)
         // The ByteArray overload copies into Skia-owned memory freed with the bitmap
