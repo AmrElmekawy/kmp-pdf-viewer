@@ -1,8 +1,12 @@
 package io.github.amrelmekawy.pdfviewer
 
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PageSize
+import androidx.compose.foundation.pager.PagerScope
+import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,11 +19,12 @@ import androidx.compose.ui.unit.dp
 import io.github.amrelmekawy.pdfviewer.internal.PdfPage
 
 /**
- * Shows the document held by [state] as horizontally swipeable pages with pinch zoom,
- * pan while zoomed, and double-tap zoom/reset.
+ * Shows the document held by [state] as swipeable pages with pinch zoom, pan while zoomed,
+ * and double-tap zoom/reset.
  *
- * Pages follow the layout direction, so in a right-to-left layout the next page is on the
- * left. Page content is never mirrored.
+ * Pages swipe horizontally by default, or vertically with [orientation]. Horizontal pages
+ * follow the layout direction, so in a right-to-left layout the next page is on the left.
+ * Page content is never mirrored.
  *
  * ```
  * val state = rememberPdfViewerState(PdfSource.Remote("https://example.com/file.pdf"))
@@ -32,7 +37,10 @@ import io.github.amrelmekawy.pdfviewer.internal.PdfPage
  *
  * @param state the state that owns the document; see [rememberPdfViewerState].
  * @param modifier the modifier for the viewer.
- * @param reverseLayout whether to reverse the page order relative to the layout direction.
+ * @param orientation the direction pages are swiped in: [Orientation.Horizontal] (the default)
+ * or [Orientation.Vertical], where the next page is below.
+ * @param reverseLayout whether to reverse the page order: relative to the layout direction
+ * when horizontal, or with the next page above when vertical.
  * @param pageSpacing the space between pages while swiping.
  * @param pageContentDescription the accessibility description of a page, given its 0-based
  * index and the page count. Pass your own to localize it.
@@ -43,6 +51,7 @@ import io.github.amrelmekawy.pdfviewer.internal.PdfPage
 public fun PdfViewer(
     state: PdfViewerState,
     modifier: Modifier = Modifier,
+    orientation: Orientation = Orientation.Horizontal,
     reverseLayout: Boolean = false,
     pageSpacing: Dp = 0.dp,
     pageContentDescription: (page: Int, pageCount: Int) -> String = PdfViewerDefaults::pageContentDescription,
@@ -59,14 +68,7 @@ public fun PdfViewer(
                 val cache = state.bitmapCache
                 var isCurrentPageZoomed by remember(pagerState) { mutableStateOf(false) }
 
-                HorizontalPager(
-                    state = pagerState,
-                    modifier = Modifier.fillMaxSize(),
-                    pageSpacing = pageSpacing,
-                    beyondViewportPageCount = 1,
-                    reverseLayout = reverseLayout,
-                    userScrollEnabled = !isCurrentPageZoomed,
-                ) { index ->
+                val pageContent: @Composable PagerScope.(Int) -> Unit = { index ->
                     PdfPage(
                         document = document,
                         cache = cache,
@@ -76,6 +78,30 @@ public fun PdfViewer(
                         contentDescription = pageContentDescription(index, loadState.pageCount),
                         onZoomedChange = { isCurrentPageZoomed = it },
                     )
+                }
+                when (orientation) {
+                    Orientation.Horizontal ->
+                        HorizontalPager(
+                            state = pagerState,
+                            modifier = Modifier.fillMaxSize(),
+                            pageSize = PageSize.Fill,
+                            pageSpacing = pageSpacing,
+                            beyondViewportPageCount = 1,
+                            reverseLayout = reverseLayout,
+                            userScrollEnabled = !isCurrentPageZoomed,
+                            pageContent = pageContent,
+                        )
+                    Orientation.Vertical ->
+                        VerticalPager(
+                            state = pagerState,
+                            modifier = Modifier.fillMaxSize(),
+                            pageSize = PageSize.Fill,
+                            pageSpacing = pageSpacing,
+                            beyondViewportPageCount = 1,
+                            reverseLayout = reverseLayout,
+                            userScrollEnabled = !isCurrentPageZoomed,
+                            pageContent = pageContent,
+                        )
                 }
             }
         }

@@ -3,6 +3,7 @@ package io.github.amrelmekawy.pdfviewer.sample
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -80,6 +81,7 @@ fun App() {
 private fun Sample(files: SampleFiles) {
     var demo by rememberSaveable { mutableStateOf(Demo.LocalFile) }
     var rtl by rememberSaveable { mutableStateOf(false) }
+    var vertical by rememberSaveable { mutableStateOf(false) }
     var fullscreen by rememberSaveable { mutableStateOf(false) }
 
     // Bytes sources compare by identity, so remember the instance.
@@ -105,7 +107,7 @@ private fun Sample(files: SampleFiles) {
     CompositionLocalProvider(LocalLayoutDirection provides direction) {
         if (fullscreen) {
             Box(Modifier.fillMaxSize().background(Color.Black)) {
-                Viewer(state, rtl, Modifier.fillMaxSize())
+                Viewer(state, rtl, vertical, Modifier.fillMaxSize())
                 Chip("Close", selected = false, Modifier.align(Alignment.TopEnd).padding(12.dp)) { fullscreen = false }
             }
         } else {
@@ -118,11 +120,13 @@ private fun Sample(files: SampleFiles) {
                         Chip(entry.label, selected = entry == demo) { demo = entry }
                     }
                 }
-                Viewer(state, rtl, Modifier.weight(1f).fillMaxWidth())
+                Viewer(state, rtl, vertical, Modifier.weight(1f).fillMaxWidth())
                 Controls(
                     state = state,
                     rtl = rtl,
                     onRtlChange = { rtl = it },
+                    vertical = vertical,
+                    onVerticalChange = { vertical = it },
                     onFullscreen = { fullscreen = true },
                 )
             }
@@ -134,11 +138,13 @@ private fun Sample(files: SampleFiles) {
 private fun Viewer(
     state: PdfViewerState,
     rtl: Boolean,
+    vertical: Boolean,
     modifier: Modifier,
 ) {
     PdfViewer(
         state = state,
         modifier = modifier,
+        orientation = if (vertical) Orientation.Vertical else Orientation.Horizontal,
         pageSpacing = 8.dp,
         // Apps localize page descriptions by passing their own lambda.
         pageContentDescription =
@@ -155,6 +161,8 @@ private fun Controls(
     state: PdfViewerState,
     rtl: Boolean,
     onRtlChange: (Boolean) -> Unit,
+    vertical: Boolean,
+    onVerticalChange: (Boolean) -> Unit,
     onFullscreen: () -> Unit,
 ) {
     val scope = rememberCoroutineScope()
@@ -173,6 +181,7 @@ private fun Controls(
         Chip("›", selected = false) { scope.launch { state.scrollToPage(state.currentPage + 1) } }
         Box(Modifier.weight(1f))
         Chip("RTL", selected = rtl) { onRtlChange(!rtl) }
+        Chip("Vertical", selected = vertical) { onVerticalChange(!vertical) }
         Chip("Reload", selected = false) { state.reload() }
         Chip("Fullscreen", selected = false, onClick = onFullscreen)
     }

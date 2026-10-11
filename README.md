@@ -3,7 +3,7 @@
 A Compose Multiplatform PDF viewer for **Android** and **iOS**.
 
 - Local file, in-memory bytes, or remote URL sources
-- Horizontal page swiping, with the current page observable and controllable
+- Horizontal or vertical page swiping, with the current page observable and controllable
 - Pinch zoom, pan while zoomed, and double-tap zoom/reset
 - Loading and error states (with retry) that you can replace with your own
 - Right-to-left layouts, localizable page descriptions for accessibility
@@ -102,10 +102,22 @@ PdfViewer(
 )
 ```
 
+### Vertical paging
+
+Pages swipe horizontally by default. Pass `Orientation.Vertical` to swipe up for the next
+page (still one page at a time):
+
+```kotlin
+PdfViewer(state, Modifier.fillMaxSize(), orientation = Orientation.Vertical)
+```
+
+`reverseLayout = true` puts the next page above instead. The layout direction does not
+affect vertical paging.
+
 ### Right-to-left and accessibility
 
-Pages follow `LocalLayoutDirection`: in a right-to-left layout the next page is on the
-left. Use `reverseLayout = true` to flip that. Page content is never mirrored.
+Horizontal pages follow `LocalLayoutDirection`: in a right-to-left layout the next page is
+on the left. Use `reverseLayout = true` to flip that. Page content is never mirrored.
 
 Each page has the accessibility description "Page X of Y". Pass your own to localize it:
 
@@ -151,8 +163,8 @@ if (fullscreen) {
 ## Limitations
 
 Not supported in 0.1.0: password-protected documents (reported as `PasswordProtected`),
-text selection and search, annotations, forms, thumbnails, outlines, vertical scrolling,
-and desktop or web targets.
+text selection and search, annotations, forms, thumbnails, outlines, continuous
+(non-paged) scrolling, and desktop or web targets.
 
 ## Sample
 

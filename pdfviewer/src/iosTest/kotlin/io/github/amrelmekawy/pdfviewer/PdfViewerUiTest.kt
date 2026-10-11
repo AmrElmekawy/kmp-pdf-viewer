@@ -1,6 +1,7 @@
 package io.github.amrelmekawy.pdfviewer
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.BasicText
@@ -11,6 +12,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.ComposeUiTest
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.TouchInjectionScope
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.onNodeWithContentDescription
@@ -18,8 +20,10 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.swipeDown
 import androidx.compose.ui.test.swipeLeft
 import androidx.compose.ui.test.swipeRight
+import androidx.compose.ui.test.swipeUp
 import androidx.compose.ui.test.v2.runComposeUiTest
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -151,30 +155,58 @@ class PdfViewerUiTest {
         }
 
     @Test
-    fun swipingLeftShowsTheNextPageInLeftToRight(): Unit =
-        assertSwipeShowsNextPage(LayoutDirection.Ltr, reverseLayout = false, swipeLeft = true)
+    fun swipingLeftShowsTheNextPageInLeftToRight(): Unit = assertSwipeShowsNextPage(LayoutDirection.Ltr) { swipeLeft() }
 
     @Test
-    fun swipingRightShowsTheNextPageInRightToLeft(): Unit =
-        assertSwipeShowsNextPage(LayoutDirection.Rtl, reverseLayout = false, swipeLeft = false)
+    fun swipingRightShowsTheNextPageInRightToLeft(): Unit = assertSwipeShowsNextPage(LayoutDirection.Rtl) { swipeRight() }
 
     @Test
-    fun reverseLayoutFlipsRightToLeft(): Unit = assertSwipeShowsNextPage(LayoutDirection.Rtl, reverseLayout = true, swipeLeft = true)
+    fun reverseLayoutFlipsRightToLeft(): Unit = assertSwipeShowsNextPage(LayoutDirection.Rtl, reverseLayout = true) { swipeLeft() }
+
+    @Test
+    fun swipingUpShowsTheNextPageWhenVertical(): Unit = assertSwipeShowsNextPage(LayoutDirection.Ltr, Orientation.Vertical) { swipeUp() }
+
+    @Test
+    fun verticalIgnoresTheLayoutDirection(): Unit = assertSwipeShowsNextPage(LayoutDirection.Rtl, Orientation.Vertical) { swipeUp() }
+
+    @Test
+    fun reverseLayoutPutsTheNextPageAboveWhenVertical(): Unit =
+        assertSwipeShowsNextPage(LayoutDirection.Ltr, Orientation.Vertical, reverseLayout = true) { swipeDown() }
+
+    @Test
+    fun horizontalSwipesDoNotPageWhenVertical(): Unit =
+        runComposeUiTest {
+            lateinit var state: PdfViewerState
+            setContent {
+                state = rememberPdfViewerState(threePages)
+                PdfViewer(state, Modifier.size(300.dp, 400.dp).testTag(VIEWER), orientation = Orientation.Vertical)
+            }
+            waitForPage("Page 1 of 3")
+            onNodeWithTag(VIEWER).performTouchInput { swipeLeft() }
+            waitForIdle()
+            assertEquals(0, state.currentPage)
+        }
 
     private fun assertSwipeShowsNextPage(
         direction: LayoutDirection,
-        reverseLayout: Boolean,
-        swipeLeft: Boolean,
+        orientation: Orientation = Orientation.Horizontal,
+        reverseLayout: Boolean = false,
+        swipe: TouchInjectionScope.() -> Unit,
     ) = runComposeUiTest {
         lateinit var state: PdfViewerState
         setContent {
             CompositionLocalProvider(LocalLayoutDirection provides direction) {
                 state = rememberPdfViewerState(threePages)
-                PdfViewer(state, Modifier.size(300.dp, 400.dp).testTag(VIEWER), reverseLayout = reverseLayout)
+                PdfViewer(
+                    state,
+                    Modifier.size(300.dp, 400.dp).testTag(VIEWER),
+                    orientation = orientation,
+                    reverseLayout = reverseLayout,
+                )
             }
         }
         waitForPage("Page 1 of 3")
-        onNodeWithTag(VIEWER).performTouchInput { if (swipeLeft) swipeLeft() else swipeRight() }
+        onNodeWithTag(VIEWER).performTouchInput(swipe)
         waitForIdle()
         assertEquals(1, state.currentPage)
     }

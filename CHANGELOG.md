@@ -4,7 +4,7 @@
 
 First release.
 
-- `PdfViewer` with horizontal paging, pinch zoom, pan, and double-tap zoom/reset.
+- `PdfViewer` with horizontal or vertical paging, pinch zoom, pan, and double-tap zoom/reset.
 - `PdfViewerState` with load state, current page, `scrollToPage`, and `reload`.
 - Sources: local file, in-memory bytes, and remote URL with headers and a disk cache.
 - Safe, platform-independent errors: `PdfError`.

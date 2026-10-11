@@ -1,8 +1,8 @@
 public final class io/github/amrelmekawy/pdfviewer/ComposableSingletons$PdfViewerKt {
 	public static final field INSTANCE Lio/github/amrelmekawy/pdfviewer/ComposableSingletons$PdfViewerKt;
 	public fun <init> ()V
-	public final fun getLambda$-1460390602$compose_pdf_viewer_pdfviewer ()Lkotlin/jvm/functions/Function4;
-	public final fun getLambda$-5341812$compose_pdf_viewer_pdfviewer ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$1068633488$compose_pdf_viewer_pdfviewer ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$908039738$compose_pdf_viewer_pdfviewer ()Lkotlin/jvm/functions/Function4;
 }
 
 public abstract interface class io/github/amrelmekawy/pdfviewer/PdfError {
@@ -141,7 +141,7 @@ public final class io/github/amrelmekawy/pdfviewer/PdfViewerDefaults {
 }
 
 public final class io/github/amrelmekawy/pdfviewer/PdfViewerKt {
-	public static final fun PdfViewer--b7W0Lw (Lio/github/amrelmekawy/pdfviewer/PdfViewerState;Landroidx/compose/ui/Modifier;ZFLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function4;Landroidx/compose/runtime/Composer;II)V
+	public static final fun PdfViewer-GHTll3U (Lio/github/amrelmekawy/pdfviewer/PdfViewerState;Landroidx/compose/ui/Modifier;Landroidx/compose/foundation/gestures/Orientation;ZFLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function4;Landroidx/compose/runtime/Composer;II)V
 }
 
 public final class io/github/amrelmekawy/pdfviewer/PdfViewerState {
