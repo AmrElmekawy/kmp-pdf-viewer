@@ -1,0 +1,14 @@
+# Private planning notes; do not publish with the library.
+/plans/
+
+# Build and IDE output.
+.gradle/
+build/
+**/build/
+.idea/
+*.iml
+local.properties
+
+# Sensitive local publication credentials.
+gradle.properties
+secrets.properties
